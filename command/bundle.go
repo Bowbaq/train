@@ -4,7 +4,6 @@ import (
 	"crypto/md5"
 	"errors"
 	"fmt"
-	"github.com/shaoshing/train"
 	"io"
 	"io/ioutil"
 	"os"
@@ -14,6 +13,8 @@ import (
 	"regexp"
 	"runtime"
 	"strings"
+
+	"github.com/Bowbaq/train"
 )
 
 const CompressorFileName = "yuicompressor-2.4.7.jar"
@@ -26,6 +27,8 @@ var Helps = `Available commands:
 func Bundle(assetsPath string, publicPath string) {
 	train.Config.AssetsPath = assetsPath
 	train.Config.PublicPath = publicPath
+	train.Config.EnableES6 = (os.Getenv("ENABLE_ES6") != "")
+	fmt.Println("-> ES6 enabled?", train.Config.EnableES6)
 
 	fmt.Println("bundle assets from: ", train.Config.AssetsPath)
 	if !prepareEnv() {
@@ -144,6 +147,11 @@ func compressAssets() {
 
 func compress(files []string, option string) {
 	if len(files) == 0 {
+		return
+	}
+
+	if train.Config.EnableES6 {
+		fmt.Println("YUI doesn't work with ES6, skipping")
 		return
 	}
 

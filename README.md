@@ -15,13 +15,13 @@ Assets Management Package for web app in Go. The main purpose of it is to introd
 Get the package:
 
 ```bash
-$ go get github.com/shaoshing/train
+$ go get github.com/Bowbaq/train
 ```
 
 Install the command-line tool:
 
 ```bash
-$ go build -o $GOPATH/bin/train github.com/shaoshing/train/cmd
+$ go build -o $GOPATH/bin/train github.com/Bowbaq/train/cmd
 ```
 
 Install [node-sass](https://github.com/sass/node-sass), [CoffeeCcript](http://coffeescript.org/)
@@ -47,7 +47,7 @@ $ $GOPATH/bin/train
 ### Quick Example
 
 ```bash
-$ cd $GOPATH/src/github.com/shaoshing/train
+$ cd $GOPATH/src/github.com/Bowbaq/train
 $ go run example/main.go
 # Visit localhost:8000 and play with the `include` directive and the SASS and CoffeeScript Pipeline.
 ```
@@ -59,7 +59,7 @@ In the example page, you can toggle the Include Directive feature, or try out th
 First, allow train to handle assets requests by adding handler to the http.ServeMux:
 
 ```go
-import "github.com/shaoshing/train"
+import "github.com/Bowbaq/train"
 
 ...
 
@@ -82,7 +82,7 @@ http.ListenAndServe(":8000", mux)
 Next, add the helper functions to templates so that Train can generate assets links for you:
 
 ```go
-import "github.com/shaoshing/train"
+import "github.com/Bowbaq/train"
 import "html/template"
 
 ...

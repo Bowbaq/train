@@ -1,10 +1,11 @@
 package trainCommand
 
 import (
-	"github.com/shaoshing/train"
-	"github.com/shaoshing/gotest"
 	"io/ioutil"
 	"testing"
+
+	"github.com/Bowbaq/train"
+	"github.com/shaoshing/gotest"
 )
 
 func init() {
