@@ -21,6 +21,8 @@ type config struct {
 	// It is set to PRODUCTION_MODE automatically if the ./public/assets exist.
 	Mode string
 	SASS sassConfig
+
+	EnableES6 bool
 }
 
 const (

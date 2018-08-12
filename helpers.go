@@ -17,13 +17,19 @@ var HelperFuncs = template.FuncMap{
 }
 
 const (
-	javascriptTag = `<script src="%s"%s></script>`
-	stylesheetTag = `<link type="text/css" rel="stylesheet" href="%s"%s>`
+	javascriptTag    = `<script src="%s"%s></script>`
+	javascriptTagES6 = `<script type="module" src="%s"%s></script>`
+	stylesheetTag    = `<link type="text/css" rel="stylesheet" href="%s"%s>`
 )
 
 func JavascriptTag(name string) template.HTML {
 	assetUrl := "javascripts/" + name + ".js"
 	paths, mtimes := resolveAssetUrls(assetUrl)
+
+	if Config.EnableES6 {
+		return generateRawHtml(paths, "", mtimes, javascriptTagES6)
+	}
+
 	return generateRawHtml(paths, "", mtimes, javascriptTag)
 }
 
